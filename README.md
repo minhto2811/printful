@@ -40,9 +40,18 @@ Import the package:
 import 'package:printful/printful.dart';
 ```
 
+Use Private key:
+
 ```dart
 Printful.instance.setBearerToken({required String token});
 ```
+
+Public App authorization:
+
+```dart
+Printful.instance.OAUTH_API.authorize;
+```
+
 
 ```dart
 Printful.instance.setHeaderStoreId({required String storeId});
