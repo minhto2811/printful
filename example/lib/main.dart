@@ -16,7 +16,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     Printful.instance.setBearerToken(
-      token: 'JOKqzBpLKuNSWzaFaMSUxiwqL6vvUSyUvVVsoGmy',
+      token: 'byly0vFucP4e5DKeLMl3gTVXuLmNedge8SIfii3M',
     );
     super.initState();
   }
