@@ -15,8 +15,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    Printful.instance.setBearerToken(
-      token: 'byly0vFucP4e5DKeLMl3gTVXuLmNedge8SIfii3M',
+    // Printful.instance.setBearerToken(
+    //   token: 'byly0vFucP4e5DKeLMl3gTVXuLmNedge8SIfii3M',
+    // );
+    Printful.instance.OAUTH_API.authorize(
+      clientId: 'app-3147029',
+      stateValue: '123',
+      redirectUrl: 'com.mxgk.dehay://oauth/callback',
     );
     super.initState();
   }
@@ -138,9 +143,7 @@ class _MyAppState extends State<MyApp> {
 
   getProduct() async {
     try {
-      final response = await Printful.instance.CATALOG_API.getProduct(
-        id: 206,
-      );
+      final response = await Printful.instance.CATALOG_API.getProduct(id: 206);
       response.result.variants.forEach((e) => print(e.toJson()));
     } catch (e) {
       print(e);
@@ -149,8 +152,9 @@ class _MyAppState extends State<MyApp> {
 
   getProductSizeGuide() async {
     try {
-      final response = await Printful.instance.CATALOG_API
-          .getProductSizeGuide(id: 206);
+      final response = await Printful.instance.CATALOG_API.getProductSizeGuide(
+        id: 206,
+      );
       print(response);
     } catch (e) {
       print(e);
@@ -159,8 +163,7 @@ class _MyAppState extends State<MyApp> {
 
   getCategories() async {
     try {
-      final response =
-          await Printful.instance.CATALOG_API.getCategories();
+      final response = await Printful.instance.CATALOG_API.getCategories();
       response.result.forEach((e) => print(e.toJson()));
     } catch (e) {
       print(e);
@@ -169,9 +172,7 @@ class _MyAppState extends State<MyApp> {
 
   getCategory() async {
     try {
-      final response = await Printful.instance.CATALOG_API.getCategory(
-        id: 1,
-      );
+      final response = await Printful.instance.CATALOG_API.getCategory(id: 1);
       print(response);
     } catch (e) {
       print(e);
