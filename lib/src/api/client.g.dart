@@ -32,7 +32,7 @@ class _PrintfulClient implements PrintfulClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/oauth/token',
+            'https://www.printful.com/oauth/token',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -62,7 +62,7 @@ class _PrintfulClient implements PrintfulClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/oauth/token',
+            'https://www.printful.com/oauth/token',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -1154,13 +1154,13 @@ class _PrintfulClient implements PrintfulClient {
   }
 
   @override
-  Future<PrintfulResponse<StoreSummary>>
+  Future<PrintfulResponse<List<StoreSummary>>>
   getBasicInformationAboutStores() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<PrintfulResponse<StoreSummary>>(
+    final _options = _setStreamType<PrintfulResponse<List<StoreSummary>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -1171,11 +1171,18 @@ class _PrintfulClient implements PrintfulClient {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late PrintfulResponse<StoreSummary> _value;
+    late PrintfulResponse<List<StoreSummary>> _value;
     try {
-      _value = PrintfulResponse<StoreSummary>.fromJson(
+      _value = PrintfulResponse<List<StoreSummary>>.fromJson(
         _result.data!,
-        (json) => StoreSummary.fromJson(json as Map<String, dynamic>),
+        (json) =>
+            json is List<dynamic>
+                ? json
+                    .map<StoreSummary>(
+                      (i) => StoreSummary.fromJson(i as Map<String, dynamic>),
+                    )
+                    .toList()
+                : List.empty(),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

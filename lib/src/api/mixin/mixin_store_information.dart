@@ -10,7 +10,7 @@ mixin MixinStoreInformation {
   );
 
   @GET('/stores')
-  Future<PrintfulResponse<StoreSummary>> getBasicInformationAboutStores();
+  Future<PrintfulResponse<List<StoreSummary>>> getBasicInformationAboutStores();
 
   @GET('/stores/{id}')
   Future<PrintfulResponse<StoreDetail>> getBasicInformationAboutAStore(

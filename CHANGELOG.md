@@ -1,3 +1,8 @@
+## 0.0.6
+
+* Add `Fixed bug OAUTH API`
+
+
 ## 0.0.5
 
 * Add `WAREHOUSE_PRODUCT_API`

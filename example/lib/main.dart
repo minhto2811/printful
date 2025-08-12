@@ -18,11 +18,7 @@ class _MyAppState extends State<MyApp> {
     // Printful.instance.setBearerToken(
     //   token: 'byly0vFucP4e5DKeLMl3gTVXuLmNedge8SIfii3M',
     // );
-    Printful.instance.configPublicApp(
-      clientId: 'app-3147029',
-      clientSecret:
-          'ECUDHklnb4sRRRHXIYK7WwxfMejhKAUd6KxL1lxDYGVHropeqCNLL8pswPLWKbb9',
-    );
+    Printful.instance.configPublicApp(clientId: '', clientSecret: '');
     super.initState();
   }
 

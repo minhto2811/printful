@@ -9,7 +9,7 @@ part of 'token_response.dart';
 TokenResponse _$TokenResponseFromJson(Map<String, dynamic> json) =>
     TokenResponse(
       accessToken: json['access_token'] as String,
-      expiresAt: json['expires_at'] as String,
+      expiresAt: (json['expires_at'] as num).toInt(),
       tokenType: json['token_type'] as String,
       refreshToken: json['refresh_token'] as String,
     );

@@ -8,7 +8,7 @@ class TokenResponse {
   final String accessToken;
 
   @JsonKey(name: 'expires_at')
-  final String expiresAt;
+  final int expiresAt;
 
   @JsonKey(name: 'token_type')
   final String tokenType;

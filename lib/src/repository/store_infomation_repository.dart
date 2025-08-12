@@ -13,7 +13,7 @@ abstract interface class StoreInformationRepository {
   });
 
   ///Authorizations:OAuth.
-  Future<PrintfulResponse<StoreSummary>> getBasicInformationAboutStores();
+  Future<PrintfulResponse<List<StoreSummary>>> getBasicInformationAboutStores();
 
   ///Authorizations:OAuth.
   ///[id] Store ID
@@ -33,7 +33,7 @@ class StoreInformationRepositoryImpl implements StoreInformationRepository {
   }) => _client.changePackingSlip(packingSlip);
 
   @override
-  Future<PrintfulResponse<StoreSummary>> getBasicInformationAboutStores() =>
+  Future<PrintfulResponse<List<StoreSummary>>> getBasicInformationAboutStores() =>
       _client.getBasicInformationAboutStores();
 
   @override
