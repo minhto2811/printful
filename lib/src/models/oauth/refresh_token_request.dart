@@ -5,7 +5,7 @@ part 'refresh_token_request.g.dart';
 @JsonSerializable()
 class RefreshTokenRequest {
   @JsonKey(name: 'grant_type')
-  final String grantType = 'refresh_token';
+  final String grantType;
 
   @JsonKey(name: 'client_id')
   final String clientId;
@@ -17,6 +17,7 @@ class RefreshTokenRequest {
   final String refreshToken;
 
   RefreshTokenRequest({
+    this.grantType = 'refresh_token',
     required this.clientId,
     required this.clientSecret,
     required this.refreshToken,

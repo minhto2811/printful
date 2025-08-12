@@ -6,12 +6,12 @@ import 'package:printful/src/models/response/printful_response.dart';
 import 'package:retrofit/http.dart';
 
 mixin MixinOauth {
-  @POST('/oauth/token')
+  @POST('https://www.printful.com/oauth/token')
   Future<TokenResponse> authorize(
     @Body() AuthorizationCodeRequest authorizationCodeRequest,
   );
 
-  @POST('/oauth/token')
+  @POST('https://www.printful.com/oauth/token')
   Future<TokenResponse> refreshToken(
     @Body() RefreshTokenRequest refreshTokenRequest,
   );

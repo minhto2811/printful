@@ -5,7 +5,7 @@ part 'authorization_code_request.g.dart';
 @JsonSerializable()
 class AuthorizationCodeRequest {
   @JsonKey(name: 'grant_type')
-  final String grantType = 'authorization_code';
+  final String grantType;
 
   @JsonKey(name: 'client_id')
   final String clientId;
@@ -16,6 +16,7 @@ class AuthorizationCodeRequest {
   final String code;
 
   AuthorizationCodeRequest({
+    this.grantType = 'authorization_code',
     required this.clientId,
     required this.clientSecret,
     required this.code,

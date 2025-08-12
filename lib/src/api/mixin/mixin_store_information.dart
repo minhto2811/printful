@@ -9,10 +9,10 @@ mixin MixinStoreInformation {
     @Body() PackingSlip packingSlip,
   );
 
-  @GET('/store')
+  @GET('/stores')
   Future<PrintfulResponse<StoreSummary>> getBasicInformationAboutStores();
 
-  @GET('/store/{id}')
+  @GET('/stores/{id}')
   Future<PrintfulResponse<StoreDetail>> getBasicInformationAboutAStore(
     @Path('id') int id,
   );

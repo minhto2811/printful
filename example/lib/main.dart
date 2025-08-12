@@ -20,7 +20,8 @@ class _MyAppState extends State<MyApp> {
     // );
     Printful.instance.configPublicApp(
       clientId: 'app-3147029',
-      clientSecret: 'oooooo',
+      clientSecret:
+          'ECUDHklnb4sRRRHXIYK7WwxfMejhKAUd6KxL1lxDYGVHropeqCNLL8pswPLWKbb9',
     );
     super.initState();
   }
@@ -132,6 +133,17 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  getBasicInformationAboutStores() async {
+    try {
+      final response =
+          await Printful.instance.STORE_INFORMATION_API
+              .getBasicInformationAboutStores();
+      print(response);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   getProducts() async {
     try {
       final response = await Printful.instance.CATALOG_API.getProducts();
@@ -229,6 +241,10 @@ class _MyAppState extends State<MyApp> {
               ElevatedButton(
                 onPressed: createOrder,
                 child: Text('createOrder'),
+              ),
+              ElevatedButton(
+                onPressed: getBasicInformationAboutStores,
+                child: Text('getBasicInformationAboutStores'),
               ),
             ],
           ),

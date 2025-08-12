@@ -7,14 +7,14 @@ import 'package:printful/src/models/sync_product/sync_product_info.dart';
 import 'package:printful/src/models/sync_product/sync_variant.dart';
 
 abstract interface class ProductRepository {
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   Future<PrintfulResponse<SyncProduct>> createANewSyncProduct({
     required ModifierSyncProduct modifierSyncProduct,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///Parameter used to filter results by status/group of Sync Products
   ///[status]Enum: "all" "synced" "unsynced" "ignored" "imported" "discontinued"
   ///"out_of_stock"
@@ -24,57 +24,57 @@ abstract interface class ProductRepository {
     required String categoryId,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
-  ///[id]integer or string
-  ///Sync Product ID (integer) or External ID (if prefixed with @)
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
+  ///[id]integer or string:
+  ///Sync Product ID (integer) or External ID (if prefixed with @).
   Future<PrintfulResponse<SyncProductInfo>> getASyncProduct({
     required dynamic id,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
-  ///[id]integer or string
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
+  ///[id]integer or string:
   ///Sync Product ID (integer) or External ID (if prefixed with @)
   Future<PrintfulResponse<SyncProductInfo>> deleteASyncProduct({
     required dynamic id,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
-  ///[id]integer or string
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
+  ///[id]integer or string:
   ///Sync Product ID (integer) or External ID (if prefixed with @)
   Future<PrintfulResponse<SyncProduct>> modifyASyncProduct({
     required ModifierSyncProduct modifierSyncProduct,
     required dynamic id,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
-  ///[id]integer or string
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
+  ///[id]integer or string:
   ///Sync Product ID (integer) or External ID (if prefixed with @)
   Future<PrintfulResponse<SyncVariant>> getASyncVariant({required dynamic id});
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
-  ///[id]integer or string
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
+  ///[id]integer or string:
   ///Sync Product ID (integer) or External ID (if prefixed with @)
   Future<PrintfulResponse<SyncVariant>> deleteASyncVariant({
     required dynamic id,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
-  ///[id]integer or string
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
+  ///[id]integer or string:
   ///Sync Product ID (integer) or External ID (if prefixed with @)
   Future<PrintfulResponse<SyncProduct>> modifyASyncVariant({
     required dynamic id,
     required ModifierSyncVariant modifierSyncVariant,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
-  ///[id]integer or string
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
+  ///[id]integer or string:
   ///Sync Product ID (integer) or External ID (if prefixed with @)
   Future<PrintfulResponse<SyncVariant>> createANewSyncVariant({
     required dynamic id,

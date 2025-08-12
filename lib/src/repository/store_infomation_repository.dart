@@ -6,16 +6,16 @@ import '../models/order/order.dart';
 import '../models/response/printful_response.dart';
 
 abstract interface class StoreInformationRepository {
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   Future<PrintfulResponse<PackingSlip>> changePackingSlip({
     required PackingSlip packingSlip,
   });
 
-  ///Authorizations:OAuth
+  ///Authorizations:OAuth.
   Future<PrintfulResponse<StoreSummary>> getBasicInformationAboutStores();
 
-  ///Authorizations:OAuth
+  ///Authorizations:OAuth.
   ///[id] Store ID
   Future<PrintfulResponse<StoreDetail>> getBasicInformationAboutAStore({
     required int id,

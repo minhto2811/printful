@@ -9,6 +9,7 @@ part of 'authorization_code_request.dart';
 AuthorizationCodeRequest _$AuthorizationCodeRequestFromJson(
   Map<String, dynamic> json,
 ) => AuthorizationCodeRequest(
+  grantType: json['grant_type'] as String? ?? 'authorization_code',
   clientId: json['client_id'] as String,
   clientSecret: json['client_secret'] as String,
   code: json['code'] as String,
@@ -17,6 +18,7 @@ AuthorizationCodeRequest _$AuthorizationCodeRequestFromJson(
 Map<String, dynamic> _$AuthorizationCodeRequestToJson(
   AuthorizationCodeRequest instance,
 ) => <String, dynamic>{
+  'grant_type': instance.grantType,
   'client_id': instance.clientId,
   'client_secret': instance.clientSecret,
   'code': instance.code,

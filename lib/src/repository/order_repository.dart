@@ -4,8 +4,8 @@ import 'package:printful/src/models/request/modifier_order.dart';
 import 'package:printful/src/models/response/printful_response.dart';
 
 abstract interface class OrderRepository {
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///[limit] max 100
   Future<PrintfulResponse<List<Order>>> getListOfOrders({
     required String status,
@@ -13,8 +13,8 @@ abstract interface class OrderRepository {
     required int limit,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///Use this to specify which store you want to use (required only for account level token).
   ///The store IDs can be retrieved with the Get basic information about stores endpoint.
   ///[confirm] Automatically submit the newly created order for fulfillment (skip the Draft phase)
@@ -25,22 +25,22 @@ abstract interface class OrderRepository {
     required ModifierOrder modifierOrder,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///Use this to specify which store you want to use (required only for account level token).
   ///The store IDs can be retrieved with the Get basic information about stores endpoint.
   ///[id] Order ID (integer) or External ID (if prefixed with @)
   Future<PrintfulResponse<Order>> getOrderData({required dynamic id});
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///Use this to specify which store you want to use (required only for account level token).
   ///The store IDs can be retrieved with the Get basic information about stores endpoint.
   ///[id] Order ID (integer) or External ID (if prefixed with @)
   Future<PrintfulResponse<Order>> cancelAnOrder({required dynamic id});
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///Use this to specify which store you want to use (required only for account level token).
   ///The store IDs can be retrieved with the Get basic information about stores endpoint.
   ///[id] Order ID (integer) or External ID (if prefixed with @)
@@ -51,8 +51,8 @@ abstract interface class OrderRepository {
     required ModifierOrder modifierOrder,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///Use this to specify which store you want to use (required only for account level token).
   ///The store IDs can be retrieved with the Get basic information about stores endpoint.
   ///[id] Order ID (integer) or External ID (if prefixed with @)
@@ -60,8 +60,8 @@ abstract interface class OrderRepository {
     required dynamic id,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///Use this to specify which store you want to use (required only for account level token).
   Future<PrintfulResponse<Order>> estimateOrderCosts({
     required ModifierOrder modifierOrder,

@@ -1164,7 +1164,7 @@ class _PrintfulClient implements PrintfulClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/store',
+            '/stores',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -1196,7 +1196,7 @@ class _PrintfulClient implements PrintfulClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/store/${id}',
+            '/stores/${id}',
             queryParameters: queryParameters,
             data: _data,
           )

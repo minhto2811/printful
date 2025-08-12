@@ -4,8 +4,8 @@ import 'package:printful/src/models/warehouse_product/warehouse_product.dart';
 import '../models/response/printful_response.dart';
 
 abstract interface class WarehouseProductRepository {
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///[query] Filter by partial or full product name
   ///[limit] Number of items per page (max 100)
   ///[offset] Offset of the first item to return
@@ -16,8 +16,8 @@ abstract interface class WarehouseProductRepository {
     required int offset,
   });
 
-  ///Authorizations:OAuth
-  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId]
+  ///Authorizations:OAuth.
+  ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///[id] Product ID
   Future<PrintfulResponse<WarehouseProduct>> getWarehouseProductData({
     required int id,
