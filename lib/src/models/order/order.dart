@@ -531,6 +531,7 @@ class Address {
 }
 
 
+///https://developers.printful.com/docs/#tag/Common/Options
 @JsonSerializable()
 class FileOption {
   final String id;
@@ -544,6 +545,7 @@ class FileOption {
   Map<String, dynamic> toJson() => _$FileOptionToJson(this);
 }
 
+///https://developers.printful.com/docs/#tag/Common/Options
 @JsonSerializable()
 class ItemOption {
   final String id;

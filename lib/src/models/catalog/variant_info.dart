@@ -22,9 +22,9 @@ class Variant {
   final int productId;
   final String name;
   final String size;
-  final String color;
+  final String? color;
   @JsonKey(name: 'color_code')
-  final String colorCode;
+  final String? colorCode;
   @JsonKey(name: 'color_code2')
   final String? colorCode2;
   final String image;

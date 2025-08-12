@@ -164,10 +164,8 @@ class _MyAppState extends State<MyApp> {
 
   getProduct() async {
     try {
-      final response = await Printful.instance.CATALOG_API.getProduct(id: 206);
-      for (var e in response.result.variants) {
-        print(e.toJson());
-      }
+      final response = await Printful.instance.CATALOG_API.getProduct(id: 793);
+      print(response.result.toJson());
     } catch (e) {
       print(e);
     }
@@ -176,7 +174,7 @@ class _MyAppState extends State<MyApp> {
   getProductSizeGuide() async {
     try {
       final response = await Printful.instance.CATALOG_API.getProductSizeGuide(
-        id: 206,
+        id: 528,
       );
       print(response);
     } catch (e) {

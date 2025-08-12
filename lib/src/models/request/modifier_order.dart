@@ -45,6 +45,7 @@ class ModifierOrder {
   Map<String, dynamic> toJson() => _$ModifierOrderToJson(this);
 }
 
+///https://developers.printful.com/docs/#tag/Examples/Orders-API-examples
 @JsonSerializable()
 class OrderItem {
   final int? id;

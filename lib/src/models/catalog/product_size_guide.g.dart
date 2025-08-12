@@ -29,9 +29,9 @@ Map<String, dynamic> _$ProductSizeGuideToJson(ProductSizeGuide instance) =>
 SizeTable _$SizeTableFromJson(Map<String, dynamic> json) => SizeTable(
   type: json['type'] as String,
   unit: json['unit'] as String,
-  description: json['description'] as String,
+  description: json['description'] as String?,
   imageUrl: json['image_url'] as String,
-  imageDescription: json['image_description'] as String,
+  imageDescription: json['image_description'] as String?,
   measurements:
       (json['measurements'] as List<dynamic>)
           .map((e) => Measurement.fromJson(e as Map<String, dynamic>))
@@ -48,8 +48,7 @@ Map<String, dynamic> _$SizeTableToJson(SizeTable instance) => <String, dynamic>{
 };
 
 Measurement _$MeasurementFromJson(Map<String, dynamic> json) => Measurement(
-  typeLabel: json['type_label'] as String?,
-  unit: json['unit'] as String?,
+  typeLabel: json['type_label'] as String,
   values:
       (json['values'] as List<dynamic>)
           .map((e) => MeasurementValue.fromJson(e as Map<String, dynamic>))
@@ -59,7 +58,6 @@ Measurement _$MeasurementFromJson(Map<String, dynamic> json) => Measurement(
 Map<String, dynamic> _$MeasurementToJson(Measurement instance) =>
     <String, dynamic>{
       'type_label': instance.typeLabel,
-      'unit': instance.unit,
       'values': instance.values,
     };
 
@@ -67,14 +65,7 @@ MeasurementValue _$MeasurementValueFromJson(Map<String, dynamic> json) =>
     MeasurementValue(
       size: json['size'] as String,
       value: json['value'] as String,
-      minValue: json['min_value'] as String,
-      maxValue: json['max_value'] as String,
     );
 
 Map<String, dynamic> _$MeasurementValueToJson(MeasurementValue instance) =>
-    <String, dynamic>{
-      'size': instance.size,
-      'value': instance.value,
-      'min_value': instance.minValue,
-      'max_value': instance.maxValue,
-    };
+    <String, dynamic>{'size': instance.size, 'value': instance.value};

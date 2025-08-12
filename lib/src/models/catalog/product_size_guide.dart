@@ -27,11 +27,11 @@ class ProductSizeGuide {
 class SizeTable {
   final String type;
   final String unit;
-  final String description;
+  final String? description;
   @JsonKey(name: 'image_url')
   final String imageUrl;
   @JsonKey(name: 'image_description')
-  final String imageDescription;
+  final String? imageDescription;
   final List<Measurement> measurements;
 
   SizeTable({
@@ -52,11 +52,10 @@ class SizeTable {
 @JsonSerializable()
 class Measurement {
   @JsonKey(name: 'type_label')
-  final String? typeLabel;
-  final String? unit;
+  final String typeLabel;
   final List<MeasurementValue> values;
 
-  Measurement({this.typeLabel, this.unit, required this.values});
+  Measurement({required this.typeLabel, required this.values});
 
   factory Measurement.fromJson(Map<String, dynamic> json) =>
       _$MeasurementFromJson(json);
@@ -68,17 +67,8 @@ class Measurement {
 class MeasurementValue {
   final String size;
   final String value;
-  @JsonKey(name: 'min_value')
-  final String minValue;
-  @JsonKey(name: 'max_value')
-  final String maxValue;
 
-  MeasurementValue({
-    required this.size,
-    required this.value,
-    required this.minValue,
-    required this.maxValue,
-  });
+  MeasurementValue({required this.size, required this.value});
 
   factory MeasurementValue.fromJson(Map<String, dynamic> json) =>
       _$MeasurementValueFromJson(json);
