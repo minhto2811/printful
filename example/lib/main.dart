@@ -18,10 +18,9 @@ class _MyAppState extends State<MyApp> {
     // Printful.instance.setBearerToken(
     //   token: 'byly0vFucP4e5DKeLMl3gTVXuLmNedge8SIfii3M',
     // );
-    Printful.instance.OAUTH_API.authorize(
+    Printful.instance.configPublicApp(
       clientId: 'app-3147029',
-      stateValue: '123',
-      redirectUrl: 'com.mxgk.dehay://oauth/callback',
+      clientSecret: 'oooooo',
     );
     super.initState();
   }
@@ -121,10 +120,24 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  authorize() async {
+    try {
+      Printful.instance.OAUTH_API.authorize(
+        stateValue: '123',
+        redirectUrl: 'https://oauthcallback-dbwq2ilmqq-uc.a.run.app/',
+        callbackUrlScheme: 'printful',
+      );
+    } catch (e) {
+      print(e);
+    }
+  }
+
   getProducts() async {
     try {
       final response = await Printful.instance.CATALOG_API.getProducts();
-      response.result.forEach((e) => print(e.toJson()));
+      for (var e in response.result) {
+        print(e.toJson());
+      }
     } catch (e) {
       print(e);
     }
@@ -144,7 +157,9 @@ class _MyAppState extends State<MyApp> {
   getProduct() async {
     try {
       final response = await Printful.instance.CATALOG_API.getProduct(id: 206);
-      response.result.variants.forEach((e) => print(e.toJson()));
+      for (var e in response.result.variants) {
+        print(e.toJson());
+      }
     } catch (e) {
       print(e);
     }
@@ -164,7 +179,9 @@ class _MyAppState extends State<MyApp> {
   getCategories() async {
     try {
       final response = await Printful.instance.CATALOG_API.getCategories();
-      response.result.forEach((e) => print(e.toJson()));
+      for (var e in response.result) {
+        print(e.toJson());
+      }
     } catch (e) {
       print(e);
     }
@@ -190,6 +207,7 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              ElevatedButton(onPressed: authorize, child: Text('authorize')),
               ElevatedButton(
                 onPressed: getProducts,
                 child: Text('getProducts'),

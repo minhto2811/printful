@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:printful/src/api/client.dart';
 import 'package:printful/src/api/interceptor.dart';
@@ -11,11 +12,18 @@ import 'package:printful/src/repository/product_repository.dart';
 import 'package:printful/src/repository/product_template_repository.dart';
 import 'package:printful/src/repository/shipping_rate_repository.dart';
 import 'package:printful/src/repository/tax_rate_repository.dart';
+import 'package:printful/src/services/token_manager.dart';
 
 final getIt = GetIt.instance;
 
 void setup() {
-  getIt.registerLazySingleton<PrintfulInterceptor>(() => PrintfulInterceptor());
+  getIt.registerLazySingleton<FlutterSecureStorage>(
+    () => FlutterSecureStorage(),
+  );
+  getIt.registerLazySingleton<TokenManager>(() => TokenManagerImpl(getIt()));
+  getIt.registerLazySingleton<PrintfulInterceptor>(
+    () => PrintfulInterceptor(getIt()),
+  );
   getIt.registerLazySingleton<Dio>(
     () => Dio(
       BaseOptions(
@@ -40,7 +48,7 @@ void setup() {
     () => ProductTemplateRepositoryImpl(getIt()),
   );
   getIt.registerLazySingleton<OauthRepository>(
-    () => OauthRepositoryImpl(getIt()),
+    () => OauthRepositoryImpl(getIt(), getIt()),
   );
   getIt.registerLazySingleton<FileLibraryRepository>(
     () => FileLibraryRepositoryImpl(getIt()),

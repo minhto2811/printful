@@ -11,7 +11,8 @@ Easily manage products, orders, and shipping in your Flutter app with native And
 
 ## 🚀 Features
 
-- 🔑 **Authentication** — Connect with your Printful account via API Key.
+- 🔑 **Authentication** — Connect with your Printful account via API Key.(Auto save token and refresh
+  token)
 - 📦 **Product Management** — Fetch product catalog, variants, and details.
 - 🛒 **Order Handling** — Create and manage orders directly from your app.
 - 🚚 **Shipping Rates** — Retrieve live shipping estimates.
@@ -40,33 +41,71 @@ Import the package:
 import 'package:printful/printful.dart';
 ```
 
-Use Private key:
+Use Private key or set Bearer token:
 
 ```dart
-Printful.instance.setBearerToken({required String token});
+Printful.instance.setBearerToken
+(
+{
+required
+String
+token
+}
+);
 ```
 
 Public App authorization:
+
+```xml
+
+<intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="com.example.abc" android:host="oauth" android:path="/callback" />
+</intent-filter>
+```
+
+```plist
+<key>CFBundleURLTypes</key>
+ <array>
+   <dict>
+     <key>CFBundleTypeRole</key>
+     <string>Editor</string>
+     <key>CFBundleURLName</key>
+     <string>com.example.abc</string>
+     <key>CFBundleURLSchemes</key>
+     <array>
+       <string>com.example.abc</string>
+     </array>
+   </dict>
+</array>
+```
+
+required call [Printful.instance.configPublicApp] earlier
 
 ```dart
 Printful.instance.OAUTH_API.authorize;
 ```
 
+---
 
 ```dart
-Printful.instance.setHeaderStoreId({required String storeId});
+Printful.instance.setHeaderStoreId
+(
+{
+required
+String
+storeId
+}
+);
 ```
 
 ```dart
-Printful.instance.OAUTH_API;
-Printful.instance.ORDER_API;
-Printful.instance.CATALOG_API;
-Printful.instance.PRODUCT_API;
-Printful.instance.PRODUCT_TEMPLATE_API;
-Printful.instance.FILE_LIBRARY_API;
-Printful.instance.SHIPPING_RATE_API;
-Printful.instance.COUNTRY_API;
-Printful.instance.TAX_RATE_API;
+Printful.instance.OAUTH_API;Printful.instance.ORDER_API;Printful.instance.CATALOG_API;Printful
+    .instance.PRODUCT_API;Printful.instance.PRODUCT_TEMPLATE_API;Printful.instance
+    .FILE_LIBRARY_API;Printful.instance.SHIPPING_RATE_API;Printful.instance.COUNTRY_API;Printful
+    .instance.TAX_RATE_API;
 ```
 
 ---

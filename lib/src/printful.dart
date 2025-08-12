@@ -22,7 +22,19 @@ class Printful {
     setup();
   }
 
-  /// Set Private key for account level token
+  String? _clientId;
+  String? _clientSecret;
+
+  void configPublicApp({String? clientId, String? clientSecret}) {
+    _clientId = clientId;
+    _clientSecret = clientSecret;
+  }
+
+  String? get clientId => _clientId;
+
+  String? get clientSecret => _clientSecret;
+
+  /// Set [Bearer token] or [Private key]
   void setBearerToken({required String token}) {
     getIt<Dio>().options.headers['Authorization'] = 'Bearer $token';
   }
