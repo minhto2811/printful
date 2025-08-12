@@ -5,6 +5,8 @@ import 'package:printful/src/repository/oauth_repository.dart';
 import 'package:printful/src/repository/order_repository.dart';
 import 'package:printful/src/repository/catalog_repository.dart';
 import 'package:printful/src/repository/product_repository.dart';
+import 'package:printful/src/repository/store_infomation_repository.dart';
+import 'package:printful/src/repository/warehouse_product_repository.dart';
 
 import 'di/injection.dart';
 import 'repository/country_repository.dart';
@@ -56,4 +58,6 @@ class Printful {
   late final SHIPPING_RATE_API = getIt<ShippingRateRepository>();
   late final COUNTRY_API = getIt<CountryRepository>();
   late final TAX_RATE_API = getIt<TaxRateRepository>();
+  late final STORE_INFORMATION_API = getIt<StoreInformationRepository>();
+  late final WAREHOUSE_PRODUCT_API = getIt<WarehouseProductRepository>();
 }

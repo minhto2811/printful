@@ -44,14 +44,7 @@ import 'package:printful/printful.dart';
 Use Private key or set Bearer token:
 
 ```dart
-Printful.instance.setBearerToken
-(
-{
-required
-String
-token
-}
-);
+Printful.instance.setBearerToken;
 ```
 
 Public App authorization:
@@ -62,7 +55,7 @@ Public App authorization:
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
-    <data android:scheme="com.example.abc" android:host="oauth" android:path="/callback" />
+    <data android:scheme="YOUR_SCHEME" android:host="oauth" android:path="/callback" />
 </intent-filter>
 ```
 
@@ -76,7 +69,7 @@ Public App authorization:
      <string>com.example.abc</string>
      <key>CFBundleURLSchemes</key>
      <array>
-       <string>com.example.abc</string>
+       <string>YOUR_SCHEME</string>
      </array>
    </dict>
 </array>
@@ -91,21 +84,21 @@ Printful.instance.OAUTH_API.authorize;
 ---
 
 ```dart
-Printful.instance.setHeaderStoreId
-(
-{
-required
-String
-storeId
-}
-);
+Printful.instance.setHeaderStoreId;
 ```
 
 ```dart
-Printful.instance.OAUTH_API;Printful.instance.ORDER_API;Printful.instance.CATALOG_API;Printful
-    .instance.PRODUCT_API;Printful.instance.PRODUCT_TEMPLATE_API;Printful.instance
-    .FILE_LIBRARY_API;Printful.instance.SHIPPING_RATE_API;Printful.instance.COUNTRY_API;Printful
-    .instance.TAX_RATE_API;
+Printful.instance.OAUTH_API;
+Printful.instance.ORDER_API;
+Printful.instance.CATALOG_API;
+Printful.instance.PRODUCT_API;
+Printful.instance.PRODUCT_TEMPLATE_API;
+Printful.instance.FILE_LIBRARY_API;
+Printful.instance.SHIPPING_RATE_API;
+Printful.instance.COUNTRY_API;
+Printful.instance.TAX_RATE_API;
+Printful.instance.STORE_INFORMATION_API;
+Printful.instance.WAREHOUSE_PRODUCT_API;
 ```
 
 ---

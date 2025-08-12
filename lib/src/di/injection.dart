@@ -11,7 +11,9 @@ import 'package:printful/src/repository/order_repository.dart';
 import 'package:printful/src/repository/product_repository.dart';
 import 'package:printful/src/repository/product_template_repository.dart';
 import 'package:printful/src/repository/shipping_rate_repository.dart';
+import 'package:printful/src/repository/store_infomation_repository.dart';
 import 'package:printful/src/repository/tax_rate_repository.dart';
+import 'package:printful/src/repository/warehouse_product_repository.dart';
 import 'package:printful/src/services/token_manager.dart';
 
 final getIt = GetIt.instance;
@@ -61,5 +63,11 @@ void setup() {
   );
   getIt.registerLazySingleton<TaxRateRepository>(
     () => TaxRateRepositoryImpl(getIt()),
+  );
+  getIt.registerLazySingleton<StoreInformationRepository>(
+    () => StoreInformationRepositoryImpl(getIt()),
+  );
+  getIt.registerLazySingleton<WarehouseProductRepository>(
+    () => WarehouseProductRepositoryImpl(getIt()),
   );
 }
