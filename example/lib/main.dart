@@ -164,7 +164,7 @@ class _MyAppState extends State<MyApp> {
 
   getProduct() async {
     try {
-      final response = await Printful.instance.CATALOG_API.getProduct(id: 793);
+      final response = await Printful.instance.CATALOG_API.getProduct(id: 528);
       print(response.result.toJson());
     } catch (e) {
       print(e);

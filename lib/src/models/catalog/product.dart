@@ -126,8 +126,8 @@ class OptionType {
   final String title;
   final String type;
 
-  ///[values] is [List<dynamic>]
-  ///[values] is [_Map<String, dynamic>]
+  ///[values] may be [List<dynamic>]
+  ///[values] may be [_Map<String, dynamic>]
   final dynamic values;
   @JsonKey(name: 'additional_price')
   final String? additionalPrice;

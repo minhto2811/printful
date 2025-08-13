@@ -1,3 +1,11 @@
+## 0.0.10
+
+* Add `Fixed bug`
+
+## 0.0.9
+
+* Add `Fixed bug`
+
 ## 0.0.8
 
 * Add `Fixed bug`
