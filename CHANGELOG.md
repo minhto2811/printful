@@ -1,3 +1,24 @@
+## 0.0.15
+
+* Add `Fixed bug
+* 
+## 0.0.14
+
+* Add `Fixed bug
+
+## 0.0.13
+
+* Add `Fixed bug
+
+## 0.0.12
+
+* Fix: Some model not found
+
+## 0.0.11
+
+* Fix: Some model not found
+
+
 ## 0.0.10
 
 * Add `Fixed bug`

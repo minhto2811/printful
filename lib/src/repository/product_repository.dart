@@ -13,6 +13,7 @@ abstract interface class ProductRepository {
     required ModifierSyncProduct modifierSyncProduct,
   });
 
+  ///https://developers.printful.com/docs/#tag/Products-API/operation/getSyncProducts
   ///Authorizations:OAuth.
   ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///Parameter used to filter results by status/group of Sync Products
@@ -20,8 +21,8 @@ abstract interface class ProductRepository {
   ///"out_of_stock"
   ///[categoryId]A comma-separated list of Category IDs of the Products that are to be returned
   Future<PrintfulResponse<List<SyncProduct>>> getSyncProducts({
-    required String status,
-    required String categoryId,
+     String? status,
+     String? categoryId,
   });
 
   ///Authorizations:OAuth.
@@ -89,8 +90,8 @@ class ProductRepositoryImpl implements ProductRepository {
 
   @override
   Future<PrintfulResponse<List<SyncProduct>>> getSyncProducts({
-    required String status,
-    required String categoryId,
+     String? status,
+     String? categoryId,
   }) => _client.getSyncProducts(status, categoryId);
 
   @override

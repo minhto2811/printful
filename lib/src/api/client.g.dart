@@ -80,12 +80,12 @@ class _PrintfulClient implements PrintfulClient {
   }
 
   @override
-  Future<PrintfulResponse<Scope>> getScopesForToken() async {
+  Future<PrintfulResponse<List<Scope>>> getScopesForToken() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<PrintfulResponse<Scope>>(
+    final _options = _setStreamType<PrintfulResponse<List<Scope>>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -96,11 +96,18 @@ class _PrintfulClient implements PrintfulClient {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late PrintfulResponse<Scope> _value;
+    late PrintfulResponse<List<Scope>> _value;
     try {
-      _value = PrintfulResponse<Scope>.fromJson(
+      _value = PrintfulResponse<List<Scope>>.fromJson(
         _result.data!,
-        (json) => Scope.fromJson(json as Map<String, dynamic>),
+        (json) =>
+            json is List<dynamic>
+                ? json
+                    .map<Scope>(
+                      (i) => Scope.fromJson(i as Map<String, dynamic>),
+                    )
+                    .toList()
+                : List.empty(),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -345,14 +352,15 @@ class _PrintfulClient implements PrintfulClient {
 
   @override
   Future<PrintfulResponse<List<SyncProduct>>> getSyncProducts(
-    String status,
-    String categoryId,
+    String? status,
+    String? categoryId,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'status': status,
       r'category_id': categoryId,
     };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<PrintfulResponse<List<SyncProduct>>>(

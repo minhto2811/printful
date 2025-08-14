@@ -13,7 +13,7 @@ SyncVariant _$SyncVariantFromJson(Map<String, dynamic> json) => SyncVariant(
   name: json['name'] as String,
   synced: json['synced'] as bool,
   variantId: (json['variant_id'] as num).toInt(),
-  retailPrice: (json['retail_price'] as num).toInt(),
+  retailPrice: json['retail_price'] as String,
   currency: json['currency'] as String,
   isIgnored: json['is_ignored'] as bool,
   sku: json['sku'] as String?,
@@ -76,15 +76,18 @@ SyncVariantFile _$SyncVariantFileFromJson(Map<String, dynamic> json) =>
     SyncVariantFile(
       type: json['type'] as String,
       id: (json['id'] as num).toInt(),
-      url: json['url'] as String,
-      options: FileOption.fromJson(json['options'] as Map<String, dynamic>),
+      url: json['url'] as String?,
+      options:
+          json['options'] == null
+              ? null
+              : FileOption.fromJson(json['options'] as Map<String, dynamic>),
       hash: json['hash'] as String,
       filename: json['filename'] as String,
       mimeType: json['mime_type'] as String,
       size: (json['size'] as num).toInt(),
       width: (json['width'] as num).toInt(),
       height: (json['height'] as num).toInt(),
-      dpi: (json['dpi'] as num).toInt(),
+      dpi: (json['dpi'] as num?)?.toInt(),
       status: json['status'] as String,
       created: (json['created'] as num).toInt(),
       thumbnailUrl: json['thumbnail_url'] as String,
@@ -117,7 +120,7 @@ Map<String, dynamic> _$SyncVariantFileToJson(SyncVariantFile instance) =>
     };
 
 SyncVariantOption _$SyncVariantOptionFromJson(Map<String, dynamic> json) =>
-    SyncVariantOption(id: json['id'] as String, value: json['value'] as String);
+    SyncVariantOption(id: json['id'] as String, value: json['value']);
 
 Map<String, dynamic> _$SyncVariantOptionToJson(SyncVariantOption instance) =>
     <String, dynamic>{'id': instance.id, 'value': instance.value};

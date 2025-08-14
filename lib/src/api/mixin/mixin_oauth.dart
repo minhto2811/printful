@@ -17,5 +17,5 @@ mixin MixinOauth {
   );
 
   @GET('/oauth/scopes')
-  Future<PrintfulResponse<Scope>> getScopesForToken();
+  Future<PrintfulResponse<List<Scope>>> getScopesForToken();
 }

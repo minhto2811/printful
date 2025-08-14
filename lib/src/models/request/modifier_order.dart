@@ -3,6 +3,8 @@ import 'package:printful/printful.dart';
 
 part 'modifier_order.g.dart';
 
+///https://developers.printful.com/docs/#tag/Orders-API
+///https://developers.printful.com/docs/#tag/Examples/Orders-API-examples
 @JsonSerializable()
 class ModifierOrder {
   ///Order ID from the external system

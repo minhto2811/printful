@@ -14,8 +14,8 @@ mixin MixinProduct {
 
   @GET('/store/products')
   Future<PrintfulResponse<List<SyncProduct>>> getSyncProducts(
-    @Query('status') String status,
-    @Query('category_id') String categoryId,
+    @Query('status') String? status,
+    @Query('category_id') String? categoryId,
   );
 
   @GET('/store/products/{id}')

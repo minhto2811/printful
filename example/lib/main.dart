@@ -15,11 +15,38 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    // Printful.instance.setBearerToken(
-    //   token: 'byly0vFucP4e5DKeLMl3gTVXuLmNedge8SIfii3M',
-    // );
-    Printful.instance.configPublicApp(clientId: '', clientSecret: '');
+    Printful.instance.configPublicApp(
+      clientId: 'app-7565064',
+      clientSecret:
+          'yAgwss0AgnM1RLLcgqYkUN29wGUuCWX6UvQPdqeXYC5zaFQ4SraUIZ1Od6OKuqb1',
+    );
     super.initState();
+  }
+
+  custom() async {
+    Printful.instance.setBearerToken(
+      token: 'dok7kxhkoMsnazgYBbaRYobFi2qzq2jzEzViwC8c',
+    );
+    final r1 =
+        await Printful.instance.STORE_INFORMATION_API
+            .getBasicInformationAboutStores();
+    for (final r in r1.result) {
+      debugPrint('>>> ${r.toJson()}');
+    }
+    Printful.instance.setHeaderStoreId(storeId: '16606394');
+    final r2 = await Printful.instance.PRODUCT_API.getSyncProducts();
+    for (final r in r2.result) {
+      debugPrint('>>> ${r.toJson()}');
+    }
+    // final r3 = await Printful.instance.PRODUCT_API.getASyncProduct(
+    //   id: 389598310,
+    // );
+    //debugPrint('>>> ${r3.result.syncProduct.toJson()}');
+    // final r4 = await Printful.instance.WAREHOUSE_PRODUCT_API
+    //     .getAListOfYourWarehouseProducts(query: 'some', limit: 10, offset: 0);
+    // for (final r in r4.result) {
+    //   debugPrint('>>> ${r.toJson()}');
+    // }
   }
 
   createOrder() async {
@@ -119,11 +146,14 @@ class _MyAppState extends State<MyApp> {
 
   authorize() async {
     try {
-      Printful.instance.OAUTH_API.authorize(
+      await Printful.instance.OAUTH_API.clearToken();
+      final tokenResponse = await Printful.instance.OAUTH_API.authorize(
         stateValue: '123',
-        redirectUrl: 'https://oauthcallback-dbwq2ilmqq-uc.a.run.app/',
+        redirectUrl:
+            'https://us-central1-childcare-3238d.cloudfunctions.net/oauthCallback',
         callbackUrlScheme: 'printful',
       );
+      tokenResponse.isValid;
     } catch (e) {
       print(e);
     }
@@ -213,6 +243,7 @@ class _MyAppState extends State<MyApp> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              ElevatedButton(onPressed: custom, child: Text('custom')),
               ElevatedButton(onPressed: authorize, child: Text('authorize')),
               ElevatedButton(
                 onPressed: getProducts,

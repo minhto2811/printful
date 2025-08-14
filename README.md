@@ -51,12 +51,17 @@ Public App authorization:
 
 ```xml
 
-<intent-filter>
+<activity
+        android:name="com.linusu.flutter_web_auth_2.CallbackActivity"
+        android:exported="true"
+        android:taskAffinity="">
+  <intent-filter android:label="flutter_web_auth_2">
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
     <category android:name="android.intent.category.BROWSABLE" />
-    <data android:scheme="YOUR_SCHEME" android:host="oauth" android:path="/callback" />
-</intent-filter>
+    <data android:scheme="YOUR_SCHEME" />
+  </intent-filter>
+</activity>
 ```
 
 ```plist

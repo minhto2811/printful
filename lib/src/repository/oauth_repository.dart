@@ -3,7 +3,6 @@ import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 import 'package:printful/printful.dart';
 import 'package:printful/src/api/client.dart';
 import 'package:printful/src/di/injection.dart';
-import 'package:printful/src/extensions/token_response_extension.dart';
 import 'package:printful/src/models/oauth/authorization_code_request.dart';
 import 'package:printful/src/models/oauth/refresh_token_request.dart';
 import 'package:printful/src/models/oauth/token_response.dart';
@@ -53,11 +52,13 @@ abstract interface class OauthRepository {
   ///Authorizations:OAuth.
   ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///Returns a list of scopes associated with the token
-  Future<PrintfulResponse<Scope>> getScopesForToken();
+  Future<PrintfulResponse<List<Scope>>> getScopesForToken();
 
   Future<TokenResponse> refreshToken({
     required RefreshTokenRequest refreshTokenRequest,
   });
+
+  Future<void> clearToken();
 }
 
 class OauthRepositoryImpl implements OauthRepository {
@@ -67,7 +68,7 @@ class OauthRepositoryImpl implements OauthRepository {
   OauthRepositoryImpl(this._client, this._tokenManager);
 
   @override
-  Future<PrintfulResponse<Scope>> getScopesForToken() =>
+  Future<PrintfulResponse<List<Scope>>> getScopesForToken() =>
       _client.getScopesForToken();
 
   @override
@@ -139,4 +140,7 @@ class OauthRepositoryImpl implements OauthRepository {
         'Bearer $tokenResponse.accessToken';
     return tokenResponse;
   }
+
+  @override
+  Future<void> clearToken() => _tokenManager.clearToken();
 }

@@ -15,7 +15,7 @@ class SyncVariant {
   @JsonKey(name: 'variant_id')
   final int variantId;
   @JsonKey(name: 'retail_price')
-  final int retailPrice;
+  final String retailPrice;
   final String currency;
   @JsonKey(name: 'is_ignored')
   final bool isIgnored;
@@ -94,8 +94,8 @@ class SyncVariantFile {
   ///depreciated, if your application uses these file
   /// types or accepts these types from users you will
   /// need to add validation.
-  final String url;
-  final FileOption options;
+  final String? url;
+  final FileOption? options;
 
   ///MD5 checksum of the file
   final String hash;
@@ -116,7 +116,7 @@ class SyncVariantFile {
   // Note: for vector files this may be indicated as only 72dpi,
   // but it doesn't affect print quality since the vector files
   // are resolution independent.
-  final int dpi;
+  final int? dpi;
 
   ///File processing status:
   /// ok - file was processed successfuly
@@ -168,7 +168,7 @@ class SyncVariantFile {
 @JsonSerializable()
 class SyncVariantOption {
   final String id;
-  final String value;
+  final dynamic value;
 
   SyncVariantOption({required this.id, required this.value});
 
