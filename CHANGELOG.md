@@ -1,7 +1,11 @@
+## 0.0.16
+
+* Add `Fixed bug
+
 ## 0.0.15
 
 * Add `Fixed bug
-* 
+
 ## 0.0.14
 
 * Add `Fixed bug
