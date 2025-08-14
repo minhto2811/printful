@@ -81,7 +81,7 @@ SyncVariantFile _$SyncVariantFileFromJson(Map<String, dynamic> json) =>
           json['options'] == null
               ? null
               : FileOption.fromJson(json['options'] as Map<String, dynamic>),
-      hash: json['hash'] as String,
+      hash: json['hash'] as String?,
       filename: json['filename'] as String,
       mimeType: json['mime_type'] as String,
       size: (json['size'] as num).toInt(),

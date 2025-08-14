@@ -98,7 +98,7 @@ class SyncVariantFile {
   final FileOption? options;
 
   ///MD5 checksum of the file
-  final String hash;
+  final String? hash;
   final String filename;
   @JsonKey(name: 'mime_type')
   final String mimeType;
