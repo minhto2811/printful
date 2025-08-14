@@ -13,6 +13,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  ///https://developers.printful.com/
+  ///Use information from your account,
+  ///[Privacy Key, clientId, clientSecret] just for demo
+  ///and can be deleted in the future.
+
   @override
   void initState() {
     Printful.instance.configPublicApp(
