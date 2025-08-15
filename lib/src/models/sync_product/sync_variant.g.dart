@@ -78,9 +78,9 @@ SyncVariantFile _$SyncVariantFileFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       url: json['url'] as String?,
       options:
-          json['options'] == null
-              ? null
-              : FileOption.fromJson(json['options'] as Map<String, dynamic>),
+          (json['options'] as List<dynamic>?)
+              ?.map((e) => FileOption.fromJson(e as Map<String, dynamic>))
+              .toList(),
       hash: json['hash'] as String?,
       filename: json['filename'] as String,
       mimeType: json['mime_type'] as String,

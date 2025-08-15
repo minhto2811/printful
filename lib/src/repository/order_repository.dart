@@ -19,7 +19,7 @@ abstract interface class OrderRepository {
   ///The store IDs can be retrieved with the Get basic information about stores endpoint.
   ///[confirm] Automatically submit the newly created order for fulfillment (skip the Draft phase)
   ///[updateExisting] Try to update existing order if an order with the specified external_id already exists
-  Future<PrintfulResponse> createANewOrder({
+  Future<PrintfulResponse<Order>> createANewOrder({
     required bool confirm,
     required bool updateExisting,
     required ModifierOrder modifierOrder,

@@ -8,7 +8,7 @@ import 'package:retrofit/http.dart';
 mixin MixinShippingRate {
 
   @POST('/shipping/rates')
-  Future<PrintfulResponse<ShippingInfo>> calculateShippingRates(
+  Future<PrintfulResponse<List<ShippingInfo>>> calculateShippingRates(
     @Body() ModifierShipping modifierShipping,
   );
 }

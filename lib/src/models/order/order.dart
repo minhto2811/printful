@@ -262,21 +262,24 @@ class OrderCosts {
   Map<String, dynamic> toJson() => _$OrderCostsToJson(this);
 }
 
-
 @JsonSerializable()
 class IncompleteItem {
   ///Incomplete item name
   final String name;
+
   ///Incompleted item quantity
   final int quantity;
+
   ///Sync variant ID of the incompleted item.
   @JsonKey(name: 'sync_variant_id')
   final int syncVariantId;
+
   ///External variant ID of the incompleted item.
   @JsonKey(name: 'external_variant_id')
   final String externalVariantId;
+
   ///External order line item id.
-  @JsonKey(name:'external_line_item_id')
+  @JsonKey(name: 'external_line_item_id')
   final String externalLineItemId;
 
   IncompleteItem({
@@ -287,7 +290,8 @@ class IncompleteItem {
     required this.externalLineItemId,
   });
 
-  factory IncompleteItem.fromJson(Map<String, dynamic> json) => _$IncompleteItemFromJson(json);
+  factory IncompleteItem.fromJson(Map<String, dynamic> json) =>
+      _$IncompleteItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$IncompleteItemToJson(this);
 }
@@ -530,7 +534,6 @@ class Address {
   Map<String, dynamic> toJson() => _$AddressToJson(this);
 }
 
-
 ///https://developers.printful.com/docs/#tag/Common/Options
 @JsonSerializable()
 class FileOption {
@@ -620,5 +623,3 @@ class PackingSlip {
 
   Map<String, dynamic> toJson() => _$PackingSlipToJson(this);
 }
-
-

@@ -95,7 +95,7 @@ class SyncVariantFile {
   /// types or accepts these types from users you will
   /// need to add validation.
   final String? url;
-  final FileOption? options;
+  final List<FileOption>? options;
 
   ///MD5 checksum of the file
   final String? hash;

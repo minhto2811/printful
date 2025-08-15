@@ -1307,7 +1307,7 @@ class _PrintfulClient implements PrintfulClient {
   }
 
   @override
-  Future<PrintfulResponse<ShippingInfo>> calculateShippingRates(
+  Future<PrintfulResponse<List<ShippingInfo>>> calculateShippingRates(
     ModifierShipping modifierShipping,
   ) async {
     final _extra = <String, dynamic>{};
@@ -1315,7 +1315,7 @@ class _PrintfulClient implements PrintfulClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(modifierShipping.toJson());
-    final _options = _setStreamType<PrintfulResponse<ShippingInfo>>(
+    final _options = _setStreamType<PrintfulResponse<List<ShippingInfo>>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -1326,11 +1326,18 @@ class _PrintfulClient implements PrintfulClient {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late PrintfulResponse<ShippingInfo> _value;
+    late PrintfulResponse<List<ShippingInfo>> _value;
     try {
-      _value = PrintfulResponse<ShippingInfo>.fromJson(
+      _value = PrintfulResponse<List<ShippingInfo>>.fromJson(
         _result.data!,
-        (json) => ShippingInfo.fromJson(json as Map<String, dynamic>),
+        (json) =>
+            json is List<dynamic>
+                ? json
+                    .map<ShippingInfo>(
+                      (i) => ShippingInfo.fromJson(i as Map<String, dynamic>),
+                    )
+                    .toList()
+                : List.empty(),
       );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

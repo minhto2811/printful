@@ -9,7 +9,7 @@ abstract class ShippingRateRepository {
   ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///Use this to specify which store you want to use (required only for account level token).
   ///The store IDs can be retrieved with the Get basic information about stores endpoint.
-  Future<PrintfulResponse<ShippingInfo>> calculateShippingRates({
+  Future<PrintfulResponse<List<ShippingInfo>>> calculateShippingRates({
     required ModifierShipping modifierShipping,
   });
 }
@@ -20,7 +20,7 @@ class ShippingRateRepositoryImpl implements ShippingRateRepository {
   ShippingRateRepositoryImpl(this._client);
 
   @override
-  Future<PrintfulResponse<ShippingInfo>> calculateShippingRates({
+  Future<PrintfulResponse<List<ShippingInfo>>> calculateShippingRates({
     required ModifierShipping modifierShipping,
   }) => _client.calculateShippingRates(modifierShipping);
 }
