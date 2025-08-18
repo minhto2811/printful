@@ -11,6 +11,7 @@ import 'package:printful/src/repository/warehouse_product_repository.dart';
 import 'di/injection.dart';
 import 'repository/country_repository.dart';
 import 'repository/file_library.dart';
+import 'repository/mockup_generator_repository.dart';
 import 'repository/product_template_repository.dart';
 import 'repository/shipping_rate_repository.dart';
 import 'repository/tax_rate_repository.dart';
@@ -60,4 +61,5 @@ class Printful {
   late final TAX_RATE_API = getIt<TaxRateRepository>();
   late final STORE_INFORMATION_API = getIt<StoreInformationRepository>();
   late final WAREHOUSE_PRODUCT_API = getIt<WarehouseProductRepository>();
+  late final MOCKUP_GENERATOR_API = getIt<MockupGeneratorRepository>();
 }

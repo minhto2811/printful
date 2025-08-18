@@ -6,6 +6,7 @@ import 'package:printful/src/api/interceptor.dart';
 import 'package:printful/src/repository/catalog_repository.dart';
 import 'package:printful/src/repository/country_repository.dart';
 import 'package:printful/src/repository/file_library.dart';
+import 'package:printful/src/repository/mockup_generator_repository.dart';
 import 'package:printful/src/repository/oauth_repository.dart';
 import 'package:printful/src/repository/order_repository.dart';
 import 'package:printful/src/repository/product_repository.dart';
@@ -69,5 +70,8 @@ void setup() {
   );
   getIt.registerLazySingleton<WarehouseProductRepository>(
     () => WarehouseProductRepositoryImpl(getIt()),
+  );
+  getIt.registerLazySingleton<MockupGeneratorRepository>(
+    () => MockupGeneratorRepositoryImpl(getIt()),
   );
 }

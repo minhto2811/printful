@@ -1307,6 +1307,146 @@ class _PrintfulClient implements PrintfulClient {
   }
 
   @override
+  Future<PrintfulResponse<MockupTemplate>> layoutTemplates(
+    int id,
+    String orientation,
+    String technique,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'orientation': orientation,
+      r'technique': technique,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<PrintfulResponse<MockupTemplate>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/mockup-generator/templates/${id}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late PrintfulResponse<MockupTemplate> _value;
+    try {
+      _value = PrintfulResponse<MockupTemplate>.fromJson(
+        _result.data!,
+        (json) => MockupTemplate.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<PrintfulResponse<GenerationTask>> createAMockupGenerationTask(
+    int id,
+    ModifierMockup modifierMockup,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(modifierMockup.toJson());
+    final _options = _setStreamType<PrintfulResponse<GenerationTask>>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/mockup-generator/create-task/${id}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late PrintfulResponse<GenerationTask> _value;
+    try {
+      _value = PrintfulResponse<GenerationTask>.fromJson(
+        _result.data!,
+        (json) => GenerationTask.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<PrintfulResponse<PrintfileInfo>> retrieveProductVariantPrintfiles(
+    int id,
+    String orientation,
+    String technique,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'orientation': orientation,
+      r'technique': technique,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<PrintfulResponse<PrintfileInfo>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/mockup-generator/printfiles/${id}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late PrintfulResponse<PrintfileInfo> _value;
+    try {
+      _value = PrintfulResponse<PrintfileInfo>.fromJson(
+        _result.data!,
+        (json) => PrintfileInfo.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<PrintfulResponse<GenerationTask>> mockupGenerationTaskResult(
+    String taskKey,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'task_key': taskKey};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<PrintfulResponse<GenerationTask>>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/mockup-generator/task',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late PrintfulResponse<GenerationTask> _value;
+    try {
+      _value = PrintfulResponse<GenerationTask>.fromJson(
+        _result.data!,
+        (json) => GenerationTask.fromJson(json as Map<String, dynamic>),
+      );
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<PrintfulResponse<List<ShippingInfo>>> calculateShippingRates(
     ModifierShipping modifierShipping,
   ) async {

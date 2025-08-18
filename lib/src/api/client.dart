@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:printful/printful.dart';
 import 'package:printful/src/api/mixin/mixin_country.dart';
 import 'package:printful/src/api/mixin/mixin_file_library.dart';
+import 'package:printful/src/api/mixin/mixin_mockup_generator.dart';
 import 'package:printful/src/api/mixin/mixin_oauth.dart';
 import 'package:printful/src/api/mixin/mixin_order.dart';
 import 'package:printful/src/api/mixin/mixin_store_information.dart';
@@ -10,6 +11,8 @@ import 'package:printful/src/api/mixin/mixin_warehouse_product.dart';
 import 'package:printful/src/models/country/country.dart';
 import 'package:printful/src/models/file_library/file_url.dart';
 import 'package:printful/src/models/file_library/print_file.dart';
+import 'package:printful/src/models/mockup/generation_task.dart';
+import 'package:printful/src/models/mockup/printfile_info.dart';
 import 'package:printful/src/models/oauth/authorization_code_request.dart';
 import 'package:printful/src/models/oauth/refresh_token_request.dart';
 import 'package:printful/src/models/oauth/token_response.dart';
@@ -41,6 +44,7 @@ abstract class PrintfulClient
         MixinTaxRate,
         MixinStoreInformation,
         MixinWarehouseProduct,
+        MixinMockupGenerator,
         MixinShippingRate {
   factory PrintfulClient(Dio dio) = _PrintfulClient;
 }
