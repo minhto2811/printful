@@ -66,7 +66,7 @@ class Measurement {
 @JsonSerializable()
 class MeasurementValue {
   final String size;
-  final String value;
+  final String? value;
 
   MeasurementValue({required this.size, required this.value});
 

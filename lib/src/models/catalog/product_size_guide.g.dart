@@ -64,7 +64,7 @@ Map<String, dynamic> _$MeasurementToJson(Measurement instance) =>
 MeasurementValue _$MeasurementValueFromJson(Map<String, dynamic> json) =>
     MeasurementValue(
       size: json['size'] as String,
-      value: json['value'] as String,
+      value: json['value'] as String?,
     );
 
 Map<String, dynamic> _$MeasurementValueToJson(MeasurementValue instance) =>
