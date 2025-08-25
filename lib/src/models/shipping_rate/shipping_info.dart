@@ -26,11 +26,11 @@ class ShippingInfo {
 
   /// Estimated minimum delivery date (timestamp).
   /// May be null if the API doesn't return it.
-  final int? minDeliveryDate;
+  final String? minDeliveryDate;
 
   /// Estimated maximum delivery date (timestamp).
   /// May be null if the API doesn't return it.
-  final int? maxDeliveryDate;
+  final String? maxDeliveryDate;
 
   ShippingInfo({
     required this.id,

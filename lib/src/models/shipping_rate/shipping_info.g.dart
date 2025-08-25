@@ -13,8 +13,8 @@ ShippingInfo _$ShippingInfoFromJson(Map<String, dynamic> json) => ShippingInfo(
   currency: json['currency'] as String,
   minDeliveryDays: (json['minDeliveryDays'] as num?)?.toInt(),
   maxDeliveryDays: (json['maxDeliveryDays'] as num?)?.toInt(),
-  minDeliveryDate: (json['minDeliveryDate'] as num?)?.toInt(),
-  maxDeliveryDate: (json['maxDeliveryDate'] as num?)?.toInt(),
+  minDeliveryDate: json['minDeliveryDate'] as String?,
+  maxDeliveryDate: json['maxDeliveryDate'] as String?,
 );
 
 Map<String, dynamic> _$ShippingInfoToJson(ShippingInfo instance) =>

@@ -125,7 +125,7 @@ class OauthRepositoryImpl implements OauthRepository {
       ),
     );
     getIt<Dio>().options.headers['Authorization'] =
-        'Bearer $tokenResponse.accessToken';
+        'Bearer ${tokenResponse.accessToken}';
     _tokenManager.saveToken(tokenResponse);
     return tokenResponse;
   }

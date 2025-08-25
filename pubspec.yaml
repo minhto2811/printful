@@ -2,7 +2,7 @@ name: printful
 description: "A Flutter plugin for seamless integration with the Printful API.
 Manage products, orders, shipping rates, and tracking directly in your Flutter apps with native Android & iOS support.
 Perfect for building custom e-commerce, print-on-demand, or dropshipping solutions."
-version: 1.0.6
+version: 1.0.8
 homepage: https://github.com/minhto2811/printful.git
 
 
