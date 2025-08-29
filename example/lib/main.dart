@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
           productTemplateId: 1,
           externalProductId: 'template-123',
           quantity: 1,
-          price: '13.00',
+          price: 13.00,
           retailPrice: '13.00',
           name: 'Enhanced Matte Paper Poster 18×24',
           product: ProductVariant(
@@ -123,10 +123,10 @@ class _MyAppState extends State<MyApp> {
       ],
       retailCosts: OrderRetailCosts(
         currency: 'USD',
-        subtotal: '10.00',
-        shipping: '5.00',
-        discount: '0.00',
-        tax: '0.00',
+        subtotal: 10.00,
+        shipping: 5.00,
+        discount: 0.00,
+        tax: 0.00,
       ),
       gift: OrderGift(subject: 'To John', message: 'Have a nice day'),
       packingSlip: PackingSlip(

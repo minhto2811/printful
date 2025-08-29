@@ -899,7 +899,7 @@ class _PrintfulClient implements PrintfulClient {
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<PrintfulResponse<Order>>(
-      Options(method: 'PUT', headers: _headers, extra: _extra)
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
             '/orders/${id}/confirm',

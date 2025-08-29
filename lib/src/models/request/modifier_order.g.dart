@@ -49,7 +49,7 @@ OrderItem _$OrderItemFromJson(Map<String, dynamic> json) => OrderItem(
   productTemplateId: (json['product_template_id'] as num?)?.toInt(),
   externalProductId: json['external_product_id'] as String?,
   quantity: (json['quantity'] as num).toInt(),
-  price: json['price'] as String?,
+  price: json['price'],
   retailPrice: json['retail_price'] as String?,
   name: json['name'] as String?,
   product:

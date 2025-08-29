@@ -40,7 +40,10 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       (json['shipments'] as List<dynamic>)
           .map((e) => OrderShipment.fromJson(e as Map<String, dynamic>))
           .toList(),
-  gift: OrderGift.fromJson(json['gift'] as Map<String, dynamic>),
+  gift:
+      json['gift'] == null
+          ? null
+          : OrderGift.fromJson(json['gift'] as Map<String, dynamic>),
   packingSlip:
       json['packing_slip'] == null
           ? null
@@ -133,16 +136,16 @@ Map<String, dynamic> _$PricingBreakdownToJson(PricingBreakdown instance) =>
 
 OrderCosts _$OrderCostsFromJson(Map<String, dynamic> json) => OrderCosts(
   currency: json['currency'] as String,
-  subtotal: json['subtotal'] as String,
-  discount: json['discount'] as String,
-  shipping: json['shipping'] as String,
-  digitization: json['digitization'] as String,
-  additionalFee: json['additional_fee'] as String,
-  fulfillmentFee: json['fulfillment_fee'] as String,
+  subtotal: json['subtotal'],
+  discount: json['discount'],
+  shipping: json['shipping'],
+  digitization: json['digitization'],
+  additionalFee: json['additional_fee'],
+  fulfillmentFee: json['fulfillment_fee'],
   retailDeliveryFee: json['retail_delivery_fee'] as String,
   tax: json['tax'] as String,
-  vat: json['vat'] as String,
-  total: json['total'] as String,
+  vat: json['vat'],
+  total: json['total'],
 );
 
 Map<String, dynamic> _$OrderCostsToJson(OrderCosts instance) =>
@@ -268,18 +271,18 @@ Map<String, dynamic> _$BrandFileToJson(BrandFile instance) => <String, dynamic>{
 
 Address _$AddressFromJson(Map<String, dynamic> json) => Address(
   name: json['name'] as String,
-  company: json['company'] as String,
+  company: json['company'] as String?,
   address1: json['address1'] as String,
-  address2: json['address2'] as String,
+  address2: json['address2'] as String?,
   city: json['city'] as String,
-  stateCode: json['stateCode'] as String,
-  stateName: json['stateName'] as String,
-  countryCode: json['countryCode'] as String,
-  countryName: json['countryName'] as String,
+  stateCode: json['state_code'] as String?,
+  stateName: json['state_name'] as String?,
+  countryCode: json['country_code'] as String,
+  countryName: json['country_name'] as String,
   zip: json['zip'] as String,
   phone: json['phone'] as String,
   email: json['email'] as String,
-  taxNumber: json['taxNumber'] as String,
+  taxNumber: json['tax_number'] as String?,
 );
 
 Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
@@ -288,14 +291,14 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
   'address1': instance.address1,
   'address2': instance.address2,
   'city': instance.city,
-  'stateCode': instance.stateCode,
-  'stateName': instance.stateName,
-  'countryCode': instance.countryCode,
-  'countryName': instance.countryName,
+  'state_code': instance.stateCode,
+  'state_name': instance.stateName,
+  'country_code': instance.countryCode,
+  'country_name': instance.countryName,
   'zip': instance.zip,
   'phone': instance.phone,
   'email': instance.email,
-  'taxNumber': instance.taxNumber,
+  'tax_number': instance.taxNumber,
 };
 
 FileOption _$FileOptionFromJson(Map<String, dynamic> json) =>
@@ -305,7 +308,7 @@ Map<String, dynamic> _$FileOptionToJson(FileOption instance) =>
     <String, dynamic>{'id': instance.id, 'value': instance.value};
 
 ItemOption _$ItemOptionFromJson(Map<String, dynamic> json) =>
-    ItemOption(id: json['id'] as String, value: json['value'] as String);
+    ItemOption(id: json['id'] as String, value: json['value']);
 
 Map<String, dynamic> _$ItemOptionToJson(ItemOption instance) =>
     <String, dynamic>{'id': instance.id, 'value': instance.value};
@@ -313,10 +316,10 @@ Map<String, dynamic> _$ItemOptionToJson(ItemOption instance) =>
 OrderRetailCosts _$OrderRetailCostsFromJson(Map<String, dynamic> json) =>
     OrderRetailCosts(
       currency: json['currency'] as String,
-      subtotal: json['subtotal'] as String?,
-      discount: json['discount'] as String?,
-      shipping: json['shipping'] as String?,
-      tax: json['tax'] as String?,
+      subtotal: json['subtotal'],
+      discount: json['discount'],
+      shipping: json['shipping'],
+      tax: json['tax'],
     );
 
 Map<String, dynamic> _$OrderRetailCostsToJson(OrderRetailCosts instance) =>

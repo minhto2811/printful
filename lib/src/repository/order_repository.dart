@@ -3,12 +3,39 @@ import 'package:printful/src/models/order/order.dart';
 import 'package:printful/src/models/request/modifier_order.dart';
 import 'package:printful/src/models/response/printful_response.dart';
 
+import '../models/order/order_status.dart';
+
 abstract interface class OrderRepository {
   ///Authorizations:OAuth.
   ///Required [X-PF-Store-Id] use method [Printful.instance.setHeaderStoreId].
   ///[limit] max 100
+  /// Order status description
+  ///
+  /// draft     - The order is created but not yet submitted for fulfillment.
+  ///             You can still edit it and confirm later.
+  ///
+  /// pending   - The order has been submitted but not yet accepted for fulfillment.
+  ///             You can still cancel if needed.
+  ///
+  /// failed    - The order was returned for review due to an error
+  ///             (invalid address, missing print files, payment failed, etc.).
+  ///
+  /// canceled  - The order has been canceled and cannot be processed anymore.
+  ///             If charged, the amount was refunded to your credit card.
+  ///
+  /// inprocess - The order is being fulfilled and cannot be canceled or modified.
+  ///             Contact support if issues occur at this stage.
+  ///
+  /// onhold    - The order has encountered a fulfillment problem and
+  ///             requires resolution with Printful customer service.
+  ///
+  /// partial   - The order is partially fulfilled (some items shipped, others pending).
+  ///
+  /// fulfilled - All items have been shipped successfully.
+  ///
+  /// archived  - The order has been archived and hidden from the UI.
   Future<PrintfulResponse<List<Order>>> getListOfOrders({
-    required String status,
+    required OrderStatus status,
     required int offset,
     required int limit,
   });
@@ -82,10 +109,10 @@ class OrderRepositoryImpl implements OrderRepository {
 
   @override
   Future<PrintfulResponse<List<Order>>> getListOfOrders({
-    required String status,
+    required OrderStatus status,
     required int offset,
     required int limit,
-  }) => _client.getListOfOrders(status, offset, limit);
+  }) => _client.getListOfOrders(status.name, offset, limit);
 
   @override
   Future<PrintfulResponse<Order>> getOrderData({required dynamic id}) =>

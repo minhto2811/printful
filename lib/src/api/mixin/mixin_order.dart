@@ -29,7 +29,7 @@ mixin MixinOrder {
     @Body() ModifierOrder modifierOrder,
   );
 
-  @PUT('/orders/{id}/confirm')
+  @POST('/orders/{id}/confirm')
   Future<PrintfulResponse<Order>> confirmDraftForFulfillment(
     @Path('id') dynamic id,
   );

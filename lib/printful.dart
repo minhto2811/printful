@@ -8,6 +8,7 @@ export 'src/models/catalog/variant_info.dart';
 export 'src/models/oauth/scope.dart';
 
 export 'src/models/order/order.dart';
+export 'src/models/order/order_status.dart';
 export 'src/models/request/modifier_order.dart';
 export 'src/models/request/modifier_sync_product.dart';
 export 'src/models/request/modifier_sync_variant.dart';

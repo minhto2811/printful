@@ -1,3 +1,29 @@
+## More...
+
+## 1.0.15
+
+* Fixed bug
+
+## 1.0.14
+
+* Fixed bug
+
+## 1.0.13
+
+* Fixed bug
+
+## 1.0.12
+
+* Fixed bug
+
+## 1.0.11
+
+* Fixed bug
+
+## 1.0.10
+
+* Fixed bug
+
 ## 1.0.9
 
 * Fixed bug

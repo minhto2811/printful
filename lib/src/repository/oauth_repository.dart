@@ -59,6 +59,8 @@ abstract interface class OauthRepository {
   });
 
   Future<void> clearToken();
+
+  Future<bool> isLogin();
 }
 
 class OauthRepositoryImpl implements OauthRepository {
@@ -81,7 +83,7 @@ class OauthRepositoryImpl implements OauthRepository {
     if (tokenResponse != null) {
       if (tokenResponse.isValid) {
         getIt<Dio>().options.headers['Authorization'] =
-            'Bearer $tokenResponse.accessToken';
+            'Bearer ${tokenResponse.accessToken}';
         return tokenResponse;
       }
       tokenResponse = await refreshToken(
@@ -93,7 +95,7 @@ class OauthRepositoryImpl implements OauthRepository {
       );
       _tokenManager.saveToken(tokenResponse);
       getIt<Dio>().options.headers['Authorization'] =
-          'Bearer $tokenResponse.accessToken';
+          'Bearer ${tokenResponse.accessToken}';
       return tokenResponse;
     }
     final url = Uri.https('www.printful.com', '/oauth/authorize', {
@@ -137,10 +139,16 @@ class OauthRepositoryImpl implements OauthRepository {
     final tokenResponse = await _client.refreshToken(refreshTokenRequest);
     _tokenManager.saveToken(tokenResponse);
     getIt<Dio>().options.headers['Authorization'] =
-        'Bearer $tokenResponse.accessToken';
+        'Bearer ${tokenResponse.accessToken}';
     return tokenResponse;
   }
 
   @override
   Future<void> clearToken() => _tokenManager.clearToken();
+
+  @override
+  Future<bool> isLogin() async {
+    final tokenResponse = await _tokenManager.loadToken();
+    return tokenResponse != null;
+  }
 }

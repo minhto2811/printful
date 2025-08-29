@@ -66,7 +66,7 @@ class Order {
   final List<OrderShipment> shipments;
 
   ///Optional gift message for the packing slip
-  final OrderGift gift;
+  final OrderGift? gift;
 
   ///Custom packing slip for this order. Example of a packing slip
   ///with explained fields can be found
@@ -90,7 +90,7 @@ class Order {
     required this.retailCosts,
     required this.pricingBreakdown,
     required this.shipments,
-    required this.gift,
+    this.gift,
     this.packingSlip,
   });
 
@@ -210,24 +210,36 @@ class OrderCosts {
   final String currency;
 
   /// Total cost of all items
-  final String subtotal;
+  /// Sometimes string, sometimes double. Damn it,
+  /// I was too tired because the document gave the wrong information
+  final dynamic subtotal;
 
   /// Discount
-  final String discount;
+  /// Sometimes string, sometimes double. Damn it,
+  /// I was too tired because the document gave the wrong information
+  final dynamic discount;
 
   /// Shipping costs
-  final String shipping;
+  /// Sometimes string, sometimes double. Damn it,
+  /// I was too tired because the document gave the wrong information
+  final dynamic shipping;
 
   /// Digitization costs
-  final String digitization;
+  /// Sometimes string, sometimes double. Damn it,
+  /// I was too tired because the document gave the wrong information
+  final dynamic digitization;
 
   /// Additional fee for custom product
+  /// Sometimes string, sometimes double. Damn it,
+  /// I was too tired because the document gave the wrong information
   @JsonKey(name: 'additional_fee')
-  final String additionalFee;
+  final dynamic additionalFee;
 
   /// Custom product fulfillment fee
+  /// Sometimes string, sometimes double. Damn it,
+  /// I was too tired because the document gave the wrong information
   @JsonKey(name: 'fulfillment_fee')
-  final String fulfillmentFee;
+  final dynamic fulfillmentFee;
 
   /// Retail delivery fee
   @JsonKey(name: 'retail_delivery_fee')
@@ -237,10 +249,14 @@ class OrderCosts {
   final String tax;
 
   /// Sum of vat (not included in the item price)
-  final String vat;
+  /// Sometimes string, sometimes double. Damn it,
+  /// I was too tired because the document gave the wrong information
+  final dynamic vat;
 
   /// Grand Total (subtotal - discount + tax + vat + shipping)
-  final String total;
+  /// Sometimes string, sometimes double. Damn it,
+  /// I was too tired because the document gave the wrong information
+  final dynamic total;
 
   OrderCosts({
     required this.currency,
@@ -477,27 +493,31 @@ class Address {
   final String name;
 
   /// Name of the company, if applicable.
-  final String company;
+  final String? company;
 
   /// First line of the street address.
   final String address1;
 
   /// Second line of the street address (e.g., apartment, suite, etc.).
-  final String address2;
+  final String? address2;
 
   /// City or locality.
   final String city;
 
   /// Abbreviated state or province code (e.g., CA, NY).
-  final String stateCode;
+  @JsonKey(name: 'state_code')
+  final String? stateCode;
 
   /// Full state or province name.
-  final String stateName;
+  @JsonKey(name: 'state_name')
+  final String? stateName;
 
   /// ISO 3166-1 alpha-2 country code (e.g., US, VN).
+  @JsonKey(name: 'country_code')
   final String countryCode;
 
   /// Full country name.
+  @JsonKey(name: 'country_name')
   final String countryName;
 
   /// Postal or ZIP code.
@@ -510,7 +530,8 @@ class Address {
   final String email;
 
   /// Tax identification number, if required.
-  final String taxNumber;
+  @JsonKey(name: 'tax_number')
+  final String? taxNumber;
 
   Address({
     required this.name,
@@ -552,7 +573,7 @@ class FileOption {
 @JsonSerializable()
 class ItemOption {
   final String id;
-  final String value;
+  final dynamic value;
 
   ItemOption({required this.id, required this.value});
 
@@ -565,10 +586,14 @@ class ItemOption {
 @JsonSerializable()
 class OrderRetailCosts {
   final String currency;
-  final String? subtotal;
-  final String? discount;
-  final String? shipping;
-  final String? tax;
+  ///WTF: In Request it is double, in Response it is string, damn api
+  final dynamic subtotal;
+  ///WTF: In Request it is double, in Response it is string, damn api
+  final dynamic discount;
+  ///WTF: In Request it is double, in Response it is string, damn api
+  final dynamic shipping;
+  ///WTF: In Request it is double, in Response it is string, damn api
+  final dynamic tax;
 
   OrderRetailCosts({
     required this.currency,

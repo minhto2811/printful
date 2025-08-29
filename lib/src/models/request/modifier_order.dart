@@ -66,7 +66,8 @@ class OrderItem {
   @JsonKey(name: 'external_product_id')
   final String? externalProductId;
   final int quantity;
-  final String? price;
+  ///WTF: In Request it is double, in Response it is string, damn api
+  final dynamic price;
   @JsonKey(name: 'retail_price')
   final String? retailPrice;
   final String? name;
@@ -88,7 +89,7 @@ class OrderItem {
     this.productTemplateId,
     this.externalProductId,
     required this.quantity,
-    this.price,
+    required this.price,
     this.retailPrice,
     this.name,
     this.product,
